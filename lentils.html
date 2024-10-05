@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lentils Products</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"> <!-- Font Awesome CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="logo">
+                <a href="index.html">
+                    <span class="company-name">MataJi Kirana Store</span>
+                    <i class="fas fa-home"></i>
+                </a>
+            </div>
+            <div class="search-bar">
+                <a href="search.html">
+                    <input id="search-input" type="text" placeholder="Search...">
+                    <button id="search-button"><i class="fas fa-search"></i></button>
+                </a>
+            </div>
+            <div class="search-button-mobile">
+                <button id="mobileSearchButton"><i class="fas fa-search"></i></button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h1>Lentils Products</h1>
+        
+        <!-- Tuar Daal Section -->
+        <h2>Tuar Daal</h2>
+        <div id="tuarDaalProducts"></div>
+
+        <!-- Moong Daal Section -->
+        <h2>Moong Daal</h2>
+        <div id="moongDaalProducts"></div>
+
+        <!-- Chana Daal Section -->
+        <h2>Chana Daal</h2>
+        <div id="chanaDaalProducts"></div>
+
+        <!-- Masoor Daal Section -->
+        <h2>Masoor Daal</h2>
+        <div id="masoorDaalProducts"></div>
+    </div>
+
+    <a href="cart.html" class="cart-button"><i class="fas fa-shopping-cart"></i></a> <!-- Link to cart.html with cart icon -->
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Add event listener to the search button for mobile
+            document.getElementById('mobileSearchButton').addEventListener('click', function () {
+                // Redirect the user to search.html
+                window.location.href = 'search.html';
+            });
+        });
+
+        // Function to fetch and display Lentil products from product.html
+        function fetchLentilProducts() {
+            fetch('product.html')
+                .then(response => response.text())
+                .then(data => {
+                    const parser = new DOMParser();
+                    const doc = parser.parseFromString(data, 'text/html');
+
+                    // Select all products with data-category="daal"
+                    const lentilProducts = Array.from(doc.querySelectorAll('.product[data-category="daal"]'));
+
+                    // Categorize products into Tuar Daal, Moong Daal, Chana Daal, and Masoor Daal
+                    const tuarDaalProducts = lentilProducts.filter(product => product.getAttribute('item-category') === 'Tuar Daal');
+                    const moongDaalProducts = lentilProducts.filter(product => product.getAttribute('item-category') === 'Moong Daal with Chilka');
+                    const chanaDaalProducts = lentilProducts.filter(product => product.getAttribute('item-category') === 'Chana Daal');
+                    const masoorDaalProducts = lentilProducts.filter(product => product.getAttribute('item-category') === 'Masoor Daal');
+
+                    // Convert filtered products into HTML strings
+                    const tuarDaalHTML = tuarDaalProducts.map(product => product.outerHTML).join('');
+                    const moongDaalHTML = moongDaalProducts.map(product => product.outerHTML).join('');
+                    const chanaDaalHTML = chanaDaalProducts.map(product => product.outerHTML).join('');
+                    const masoorDaalHTML = masoorDaalProducts.map(product => product.outerHTML).join('');
+
+                    // Display the products in their respective sections
+                    document.getElementById('tuarDaalProducts').innerHTML = tuarDaalHTML;
+                    document.getElementById('moongDaalProducts').innerHTML = moongDaalHTML;
+                    document.getElementById('chanaDaalProducts').innerHTML = chanaDaalHTML;
+                    document.getElementById('masoorDaalProducts').innerHTML = masoorDaalHTML;
+                })
+                .catch(error => console.error('Error fetching lentil products:', error));
+        }
+
+        // Call the function to fetch and display Lentil products when the page loads
+        window.onload = fetchLentilProducts;
+
+        function addToCart(name, price) {
+            let cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+
+            let found = false;
+            cartItems.forEach(item => {
+                if (item.name === name) {
+                    item.quantity++;
+                    found = true;
+                }
+            });
+
+            if (!found) {
+                cartItems.push({ name: name, price: price, quantity: 1 });
+            }
+
+            localStorage.setItem('cart', JSON.stringify(cartItems));
+
+            // Show pop-up message
+            showCartPopup(name);
+        }
+
+        function showCartPopup(productName) {
+            const cartPopup = document.getElementById('cart_popup');
+            cartPopup.innerText = `${productName} added to cart!`;
+            cartPopup.style.display = 'block';
+
+            setTimeout(() => {
+                cartPopup.style.display = 'none';
+            }, 2000);
+        }
+    </script>
+
+    <div id="cart_popup"></div>
+</body>
+</html>

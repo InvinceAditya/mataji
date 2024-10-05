@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9402946388242349"
+     crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Page</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"> <!-- Font Awesome CSS -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f7f7f7;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .search-container {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .search-container input[type=text] {
+            padding: 10px;
+            width: 80%;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        .product {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease;
+            padding: 10px;
+            width: 150px;
+            height: 200px;
+            margin-right: 10px;
+            margin-bottom: 10px;
+        }
+
+        .product img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin-bottom: 10px;
+        }
+
+        .product-details {
+            text-align: center;
+            padding: 0 10px;
+        }
+
+        .product-name {
+            font-size: 14px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .product-price {
+            font-size: 12px;
+            color: #777;
+            margin-bottom: 10px;
+        }
+
+        .product button {
+            background-color: #4CAF50;
+            color: #fff;
+            padding: 6px 12px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            font-size: 12px;
+        }
+
+        .product button:hover {
+            background-color: #45a049;
+        }
+
+        .popup {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .popup-content {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 80%;
+            max-height: 80%;
+            overflow-y: auto;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .cart-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #4CAF50;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        #cart_popup {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: rgba(0, 128, 0, 0.8);
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            display: none;
+            z-index: 9999;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Product Page</h1>
+
+    <div class="search-container">
+        <input type="text" id="searchInput" onclick="openSearch()" placeholder="Search for products...">
+    </div>
+
+    <div id="productContainer" style="display: flex; flex-wrap: wrap;">
+      
+<!--Products Starting-->
+
+<div class="product" data-category="oil" oil-category="refined-oil">
+    <img src="https://m.media-amazon.com/images/I/612rtX-CSVL._SX679_.jpg" alt="Product 2">
+    <div class="product-details">
+        <div class="product-name">Fortune - Mustard oil - 0.5L</div>
+        <div class="product-price">Rs.90 </div>
+        <button onclick="addToCart('Fortune - Mustard oil - 0.5L', 90.00)">Add to Cart</button>
+    </div>
+</div>
+<div class="product" data-category="oil" oil-category="refined-oil">
+    <img src="https://m.media-amazon.com/images/I/612rtX-CSVL._SX679_.jpg" alt="Product 2">
+    <div class="product-details">
+        <div class="product-name">Fortune - Soybean oil - 1L</div>
+        <div class="product-price">Rs.138 </div>
+        <button onclick="addToCart('Fortune - Soybean oil - 1L', 138.00)">Add to Cart</button>
+    </div>
+</div>
+<div class="product" data-category="oil" oil-category="refined-oil">
+    <img src="https://m.media-amazon.com/images/I/612rtX-CSVL._SX679_.jpg" alt="Product 2">
+    <div class="product-details">
+        <div class="product-name">Fortune - Sunflower oil - 1L</div>
+        <div class="product-price">Rs.140 </div>
+        <button onclick="addToCart('Fortune - Sunflower oil - 1L', 140.00)">Add to Cart</button>
+    </div>
+</div>
+<div class="product" data-category="oil" oil-category="refined-oil">
+    <img src="https://m.media-amazon.com/images/I/612rtX-CSVL._SX679_.jpg" alt="Product 2">
+    <div class="product-details">
+        <div class="product-name">Tirupati - Cottonseed oil - 1L</div>
+        <div class="product-price">Rs.145</div>
+        <button onclick="addToCart('Tirupati - Cottonseed oil - 1L', 145.00)">Add to Cart</button>
+    </div>
+</div>
+<!--Ghee-->
+<div class="product" data-category="oil" oil-category="ghee">
+    <img src="https://m.media-amazon.com/images/I/612rtX-CSVL._SX679_.jpg" alt="Product 2">
+    <div class="product-details">
+        <div class="product-name">Gowardhan - Ghee - 500ml</div>
+        <div class="product-price">Rs.370</div>
+        <button onclick="addToCart('Gowardhan - Ghee - 500ml', 370.00)">Add to Cart</button>
+    </div>
+</div>
+<div class="product" data-category="oil" oil-category="ghee">
+    <img src="https://m.media-amazon.com/images/I/612rtX-CSVL._SX679_.jpg" alt="Product 2">
+    <div class="product-details">
+        <div class="product-name">Shree - Ghee - 35ml-pkt</div>
+        <div class="product-price">Rs.20</div>
+        <button onclick="addToCart('Shree - Ghee - 35ml-pkt', 20.00)">Add to Cart</button>
+    </div>
+</div>
+<!--Pooja Oil-->
+<div class="product" data-category="oil" oil-category="PoojaOil">
+    <img src="https://m.media-amazon.com/images/I/612rtX-CSVL._SX679_.jpg" alt="Product 2">
+    <div class="product-details">
+        <div class="product-name">Ashatdeep - Til Oil - 180ml</div>
+        <div class="product-price">Rs.70</div>
+        <button onclick="addToCart('Ashatdeep - Til Oil - 180ml', 70.00)">Add to Cart</button>
+    </div>
+</div>
+
+<!--Washing Section-->
+<div class="product" data-category="washing" washing-category="VimBar">
+    <img src="https://example.com/dishwash110g.jpg" alt="Vim Bar - Dish Wash 110g">
+    <div class="product-details">
+        <div class="product-name">Dish Wash Bar - 110g (Wim Bar)</div>
+        <div class="product-price">MRP: Rs.10 | Sale Price: Rs.10</div>
+        <button onclick="addToCart('Dish Wash Bar - 110g Vim Bar', 10.00)">Add to Cart</button>
+    </div>
+</div>
+<div class="product" data-category="washing" washing-category="Rajani">
+    <img src="https://example.com/dishwash100g.jpg" alt="Rajani - Dish Wash 100g">
+    <div class="product-details">
+        <div class="product-name">Dish Wash Bar - 100g (Rajani)</div>
+        <div class="product-price">MRP: Rs.5 | Sale Price: Rs.5</div>
+        <button onclick="addToCart('Dish Wash Bar - 100g (Rajani)', 5.00)">Add to Cart</button>
+    </div>
+</div>
+<div class="product" data-category="washing" washing-category="SurfExcel">
+    <img src="https://example.com/washingpowder80g.jpg" alt="Surf Excel - Washing Powder 80g">
+    <div class="product-details">
+        <div class="product-name">Washing Powder - 80g (Surf Excel)</div>
+        <div class="product-price">MRP: Rs.10 | Sale Price: Rs.10</div>
+        <button onclick="addToCart('Washing Powder - 80g Surf Excel', 10.00)">Add to Cart</button>
+    </div>
+</div>
+<div class="product" data-category="washing" washing-category="SurfExcel">
+    <img src="https://example.com/washingpowder500g.jpg" alt="Surf Excel - Washing Powder 500g">
+    <div class="product-details">
+        <div class="product-name">Washing Powder - 500g (Surf Excel)</div>
+        <div class="product-price">MRP: Rs.76 | Sale Price: Rs.76</div>
+        <button onclick="addToCart('Washing Powder - 500g Surf Excel', 76.00)">Add to Cart</button>
+    </div>
+</div>
+<div class="product" data-category="washing" washing-category="SurfExcel">
+    <img src="https://example.com/washingpowder1kg.jpg" alt="Surf Excel - Washing Powder 1kg">
+    <div class="product-details">
+        <div class="product-name">Washing Powder - 1kg (Surf Excel)</div>
+        <div class="product-price">MRP: Rs.152 | Sale Price: Rs.152</div>
+        <button onclick="addToCart('Washing Powder - 1kg Surf Excel', 152.00)">Add to Cart</button>
+    </div>
+</div>
+<div class="product" data-category="washing" washing-category="Wheel">
+    <img src="https://example.com/washingpowder125g.jpg" alt="Wheel - Washing Powder 125g">
+    <div class="product-details">
+        <div class="product-name">Washing Powder - 125g (Wheel)</div>
+        <div class="product-price">MRP: Rs.10 | Sale Price: Rs.10</div>
+        <button onclick="addToCart('Washing Powder - 125g Wheel', 10.00)">Add to Cart</button>
+    </div>
+</div>
+<div class="product" data-category="washing" washing-category="Wheel">
+    <img src="https://example.com/washingpowder500g.jpg" alt="Wheel - Washing Powder 500g">
+    <div class="product-details">
+        <div class="product-name">Washing Powder - 500g (Wheel)</div>
+        <div class="product-price">MRP: Rs.36 | Sale Price: Rs.36</div>
+        <button onclick="addToCart('Washing Powder - 500g Wheel', 36.00)">Add to Cart</button>
+    </div>
+</div>
+<div class="product" data-category="washing" washing-category="Wheel">
+    <img src="https://example.com/washingpowder1kg.jpg" alt="Wheel - Washing Powder 1kg">
+    <div class="product-details">
+        <div class="product-name">Washing Powder - 1kg (Wheel)</div>
+        <div class="product-price">MRP: Rs.71 | Sale Price: Rs.71</div>
+        <button onclick="addToCart('Washing Powder - 1kg Wheel', 71.00)">Add to Cart</button>
+    </div>
+</div>
+<div class="product" data-category="washing" washing-category="SurfExcel">
+    <img src="https://example.com/surfexcelmaticfrontload.jpg" alt="Surf Excel Matic - Front Load">
+    <div class="product-details">
+        <div class="product-name">Surf Excel Matic - Front Load</div>
+        <div class="product-price">MRP: Rs.140 | Sale Price: Rs.140</div>
+        <button onclick="addToCart('Surf Excel Matic - Front Load', 140.00)">Add to Cart</button>
+    </div>
+</div>
+<div class="product" data-category="washing" washing-category="Lizol">
+    <img src="https://example.com/lizoltriplegermaction.jpg" alt="Lizol - Triple Germ Action">
+    <div class="product-details">
+        <div class="product-name">Lizol - Triple Germ Action</div>
+        <div class="product-price">MRP: Rs.45 | Sale Price: Rs.45</div>
+        <button onclick="addToCart('Lizol - Triple Germ Action', 45.00)">Add to Cart</button>
+    </div>
+</div>
+<div class="product" data-category="washing" washing-category="Sunny Phenyl">
+    <img src="https://example.com/sunnyphenyl.jpg" alt="Sunny Phenyl">
+    <div class="product-details">
+        <div class="product-name">Sunny Phenyl</div>
+        <div class="product-price">MRP: Rs.55 | Sale Price: Rs.55</div>
+        <button onclick="addToCart('Sunny Phenyl', 55.00)">Add to Cart</button>
+    </div>
+</div>
+<div class="product" data-category="washing" washing-category="Harpic">
+    <img src="https://example.com/harpic200ml.jpg" alt="Harpic - 200ml">
+    <div class="product-details">
+        <div class="product-name">Harpic - 200ml</div>
+        <div class="product-price">MRP: Rs.44 | Sale Price: Rs.44</div>
+        <button onclick="addToCart('Harpic - 200ml', 44.00)">Add to Cart</button>
+    </div>
+</div>
+<div class="product" data-category="washing" washing-category="Acid">
+    <img src="https://example.com/acid1ltr.jpg" alt="Acid - 1Ltr">
+    <div class="product-details">
+        <div class="product-name">Acid - 1Ltr</div>
+        <div class="product-price">MRP: Rs.30 | Sale Price: Rs.20</div>
+        <button onclick="addToCart('Acid - 1Ltr', 20.00)">Add to Cart</button>
+    </div>
+</div>
+<div class="product" data-category="washing" washing-category="Patanjali">
+    <img src="https://example.com/herbalhandwash200ml.jpg" alt="Herbal Handwash - 200ml">
+    <div class="product-details">
+        <div class="product-name">Patanjali Herbal Handwash - 200ml</div>
+        <div class="product-price">MRP: Rs.45 | Sale Price: Rs.45</div>
+        <button onclick="addToCart('Patanjali Herbal Handwash - 200ml', 45.00)">Add to Cart</button>
+    </div>
+</div>
+
+<!--TEA SECTION-->
+<div class="product" data-category="tea" item-category="Taaza Tea">
+    <img src="https://example.com/taaza125g.jpg" alt="Taaza Tea - 125g">
+    <div class="product-details">
+        <div class="product-name">Taaza Tea - 125g</div>
+        <div class="product-price">MRP: Rs.25 | Sale Price: Rs.25</div>
+        <button onclick="addToCart('Taaza Tea - 125g', 25.00)">Add to Cart</button>
+    </div>
+</div>
+<div class="product" data-category="tea" item-category="Taaza Tea">
+    <img src="https://example.com/taaza40g.jpg" alt="Taaza Tea - 40g">
+    <div class="product-details">
+        <div class="product-name">Taaza Tea - 40g</div>
+        <div class="product-price">MRP: Rs.10 | Sale Price: Rs.10</div>
+        <button onclick="addToCart('Taaza Tea - 40g', 10.00)">Add to Cart</button>
+    </div>
+</div>
+<div class="product" data-category="tea" item-category="Wagh Bakri">
+    <img src="https://example.com/waghbakri50g.jpg" alt="Wagh Bakri - 50g">
+    <div class="product-details">
+        <div class="product-name">Wagh Bakri - 50g</div>
+        <div class="product-price">MRP: Rs.30 | Sale Price: Rs.30</div>
+        <button onclick="addToCart('Wagh Bakri - 50g', 30.00)">Add to Cart</button>
+    </div>
+</div>
+<div class="product" data-category="tea" item-category="Wagh Bakri">
+    <img src="https://example.com/waghbakri20g.jpg" alt="Wagh Bakri - 20g">
+    <div class="product-details">
+        <div class="product-name">Wagh Bakri - 20g</div>
+        <div class="product-price">MRP: Rs.10 | Sale Price: Rs.10</div>
+        <button onclick="addToCart('Wagh Bakri - 20g', 10.00)">Add to Cart</button>
+    </div>
+</div>
+<!--DAAl SECTION-->
+<div class="product" data-category="daal" item-category="Tuar Daal">
+    <img src="https://example.com/tuardaal1kg.jpg" alt="Tuar Daal - 1 KG">
+    <div class="product-details">
+        <div class="product-name">Tuar Daal - 1 KG</div>
+        <div class="product-price">MRP: Rs.180 | Sale Price: Rs.180</div>
+        <button onclick="addToCart('Tuar Daal - 1 KG', 180.00)">Add to Cart</button>
+    </div>
+</div>
+<div class="product" data-category="daal" item-category="Tuar Daal">
+    <img src="https://example.com/tuardaal1kg.jpg" alt="Tuar Daal - 1 KG">
+    <div class="product-details">
+        <div class="product-name">Tuar Daal - 1 KG</div>
+        <div class="product-price">MRP: Rs.180 | Sale Price: Rs.180</div>
+        <button onclick="addToCart('Tuar Daal - 1 KG', 180.00)">Add to Cart</button>
+    </div>
+</div>
+<div class="product" data-category="daal" item-category="Moong Daal with Chilka">
+    <img src="https://example.com/moongdaalchilka1kg.jpg" alt="Moong Daal with Chilka - 1 KG">
+    <div class="product-details">
+        <div class="product-name">Moong Daal - 1 KG</div>
+        <div class="product-price">MRP: Rs.140 | Sale Price: Rs.140</div>
+        <button onclick="addToCart('Moong Daal - 1 KG', 140.00)">Add to Cart</button>
+    </div>
+</div>
+<div class="product" data-category="daal" item-category="Moong Daal with Chilka">
+    <img src="https://example.com/moongdaalchilka1kg.jpg" alt="Moong Daal with Chilka - 1 KG">
+    <div class="product-details">
+        <div class="product-name">Moong Daal with Chilka - 1 KG</div>
+        <div class="product-price">MRP: Rs.120 | Sale Price: Rs.120</div>
+        <button onclick="addToCart('Moong Daal with Chilka - 1 KG', 120.00)">Add to Cart</button>
+    </div>
+</div>
+<div class="product" data-category="daal" item-category="Chana Daal">
+    <img src="https://example.com/chanadaal1kg.jpg" alt="Chana Daal - 1 KG">
+    <div class="product-details">
+        <div class="product-name">Chana Daal - 1 KG</div>
+        <div class="product-price">MRP: Rs.100 | Sale Price: Rs.100</div>
+        <button onclick="addToCart('Chana Daal - 1 KG', 100.00)">Add to Cart</button>
+    </div>
+</div>
+<div class="product" data-category="daal" item-category="Masoor Daal">
+    <img src="https://example.com/masoordaal1kg.jpg" alt="Masoor Daal - 1 KG">
+    <div class="product-details">
+        <div class="product-name">Masoor Daal - 1 KG</div>
+        <div class="product-price">MRP: Rs.100 | Sale Price: Rs.100</div>
+        <button onclick="addToCart('Masoor Daal - 1 KG', 100.00)">Add to Cart</button>
+    </div>
+</div>
+<!--Rice Section-->
+<div class="product" data-category="rice" item-category="Mata Ji">
+    <img src="https://example.com/mataji1kg.jpg" alt="Rice Mata Ji - 1 KG">
+    <div class="product-details">
+        <div class="product-name">Rice Mata Ji - 1 KG</div>
+        <div class="product-price">MRP: Rs.62 | Sale Price: Rs.62</div>
+        <button onclick="addToCart('Rice Mata Ji - 1 KG', 62.00)">Add to Cart</button>
+    </div>
+</div>
+<div class="product" data-category="rice" item-category="Tulsi Gold">
+    <img src="https://example.com/tulsigold1kg.jpg" alt="Rice Tulsi Gold - 1 KG">
+    <div class="product-details">
+        <div class="product-name">Rice Tulsi Gold - 1 KG</div>
+        <div class="product-price">MRP: Rs.65 | Sale Price: Rs.65</div>
+        <button onclick="addToCart('Rice Tulsi Gold - 1 KG', 65.00)">Add to Cart</button>
+    </div>
+</div>
+<div class="product" data-category="rice" item-category="Tulsi Gold">
+    <img src="https://example.com/tulsigold5kg.jpg" alt="Rice Tulsi Gold - 5 KG">
+    <div class="product-details">
+        <div class="product-name">Rice Tulsi Gold - 5 KG</div>
+        <div class="product-price">MRP: Rs.55 | Sale Price: Rs.55</div>
+        <button onclick="addToCart('Rice Tulsi Gold - 5 KG', 55.00)">Add to Cart</button>
+    </div>
+</div>
+<div class="product" data-category="rice" item-category="Basmati Pulav">
+    <img src="https://example.com/basmatipulav1kg.jpg" alt="Basmati Pulav Rice - 1 KG">
+    <div class="product-details">
+        <div class="product-name">Basmati Pulav Rice - 1 KG</div>
+        <div class="product-price">MRP: Rs.177 | Sale Price: Rs.165</div>
+        <button onclick="addToCart('Basmati Pulav Rice - 1 KG', 165.00)">Add to Cart</button>
+    </div>
+</div>
+<div class="product" data-category="rice" item-category="Basmati Super">
+    <img src="https://example.com/biryanisuper1kg.jpg" alt="Basmati Super (Biryani) - 1 KG + 100G">
+    <div class="product-details">
+        <div class="product-name">Basmati Super (Biryani) - 1 KG + 100G</div>
+        <div class="product-price">MRP: Rs.215 | Sale Price: Rs.200</div>
+        <button onclick="addToCart('Basmati Super (Biryani) - 1 KG + 100G', 200.00)">Add to Cart</button>
+    </div>
+</div>
+<!--Flour Section-->
+<div class="product" data-category="atta" item-category="Makhan Bhog">
+    <img src="https://example.com/makhanbhog5kg.jpg" alt="Atta - Makhan Bhog - 5 KG">
+    <div class="product-details">
+        <div class="product-name">Atta - Makhan Bhog - 5 KG</div>
+        <div class="product-price">MRP: Rs.250 | Sale Price: Rs.190</div>
+        <button onclick="addToCart('Atta - Makhan Bhog - 5 KG', 190.00)">Add to Cart</button>
+    </div>
+</div> 
+<div class="product" data-category="sauce" item-category="Chings">
+    <img src="https://example.com/redchillisauce90gm.jpg" alt="Red Chilli Sauce - 90gm">
+    <div class="product-details">
+        <div class="product-name">Chings Red Chilli Sauce - 90gm</div>
+        <div class="product-price">MRP: Rs.25 | Sale Price: Rs.25</div>
+        <button onclick="addToCart('Chings Red Chilli Sauce - 90gm', 25.00)">Add to Cart</button>
+    </div>
+</div>
+<div class="product" data-category="sauce" item-category="Chings">
+    <img src="https://example.com/redchillisauce90gm.jpg" alt="Dark Soya  Sauce - 90gm">
+    <div class="product-details">
+        <div class="product-name">Chings Dark Soya Sauce - 90gm</div>
+        <div class="product-price">MRP: Rs.25 | Sale Price: Rs.25</div>
+        <button onclick="addToCart('Chings Dark Soya Sauce - 90gm', 25.00)">Add to Cart</button>
+    </div>
+</div>
+<div class="product" data-category="sauce" item-category="Tomato Ketchup">
+    <img src="https://example.com/tomatoketchup90gm.jpg" alt="Tomato Ketchup - 90gm">
+    <div class="product-details">
+        <div class="product-name">Smith & Jones Tomato Ketchup - 90gm</div>
+        <div class="product-price">MRP: Rs.15 | Sale Price: Rs.15</div>
+        <button onclick="addToCart('Smith & Jones Tomato Ketchup - 90gm', 15.00)">Add to Cart</button>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+</div>
+
+<a href="cart.html" class="cart-button"><i class="fas fa-shopping-cart"></i></a> <!-- Link to cart.html with cart icon -->
+
+<div id="searchPopup" class="popup">
+    <div class="popup-content">
+        <span class="close" onclick="closeSearch()">&times;</span>
+        <input type="text" id="searchInputPopup" onkeyup="searchProducts()" placeholder="Search for products...">
+        <div id="searchResults"></div>
+    </div>
+</div>
+
+<div id="cart_popup"></div>
+
+<script>
+    function addToCart(name, price) {
+        let cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+
+        let found = false;
+        cartItems.forEach(item => {
+            if (item.name === name) {
+                item.quantity++;
+                found = true;
+            }
+        });
+
+        if (!found) {
+            cartItems.push({ name: name, price: price, quantity: 1 });
+        }
+
+        localStorage.setItem('cart', JSON.stringify(cartItems));
+
+        // Show pop-up message
+        showCartPopup(name);
+    }
+
+    function showCartPopup(productName) {
+        const cartPopup = document.getElementById('cart_popup');
+        cartPopup.innerText = `${productName} added to cart!`;
+        cartPopup.style.display = 'block';
+
+        setTimeout(() => {
+            cartPopup.style.display = 'none';
+        }, 2000);
+    }
+
+    function openSearch() {
+        document.getElementById('searchPopup').style.display = 'flex';
+    }
+
+    function closeSearch() {
+        document.getElementById('searchPopup').style.display = 'none';
+    }
+
+    function searchProducts() {
+        let input, filter, products, productName, i;
+        input = document.getElementById('searchInputPopup');
+        filter = input.value.toUpperCase();
+        products = document.getElementById('productContainer').getElementsByClassName('product');
+        let searchResults = '';
+
+        for (i = 0; i < products.length; i++) {
+            productName = products[i].getElementsByClassName('product-name')[0];
+            if (productName.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                searchResults += products[i].outerHTML;
+            }
+        }
+
+        document.getElementById('searchResults').innerHTML = searchResults;
+    }
+    function categorizeAndStoreProducts() {
+    let products = document.getElementsByClassName('product');
+    let oilProducts = [];
+    let washingProducts = [];
+
+    for (let i = 0; i < products.length; i++) {
+        let category = products[i].getAttribute('data-category');
+        if (category === 'oil') {
+            oilProducts.push(products[i].outerHTML);
+        } else if (category === 'washing') {
+            healthProducts.push(products[i].outerHTML);
+        } 
+    }
+
+    localStorage.setItem('oilProducts', JSON.stringify(oilProducts));
+    localStorage.setItem('washingProducts', JSON.stringify(washingProducts));
+}
+
+// Call the function to categorize and store products when the page loads
+window.onload = categorizeAndStoreProducts;
+
+
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rice Products</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"> <!-- Font Awesome CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="logo">
+                <a href="index.html">
+                    <span class="company-name">MataJi Kirana Store</span>
+                    <i class="fas fa-home"></i>
+                </a>
+            </div>
+            <div class="search-bar">
+                <a href="search.html">
+                    <input id="search-input" type="text" placeholder="Search...">
+                    <button id="search-button"><i class="fas fa-search"></i></button>
+                </a>
+            </div>
+            <div class="search-button-mobile">
+                <button id="mobileSearchButton"><i class="fas fa-search"></i></button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h1>Rice Products</h1>
+        
+        <!-- Mata Ji Rice Section -->
+        <h2>Mata Ji Rice</h2>
+        <div id="mataJiRiceProducts"></div>
+
+        <!-- Tulsi Gold Rice Section -->
+        <h2>Tulsi Gold Rice</h2>
+        <div id="tulsiGoldRiceProducts"></div>
+
+        <!-- Basmati Pulav Rice Section -->
+        <h2>Basmati Pulav Rice</h2>
+        <div id="basmatiPulavRiceProducts"></div>
+
+        <!-- Basmati Super Rice Section -->
+        <h2>Basmati Super Rice</h2>
+        <div id="basmatiSuperRiceProducts"></div>
+    </div>
+
+    <a href="cart.html" class="cart-button"><i class="fas fa-shopping-cart"></i></a> <!-- Link to cart.html with cart icon -->
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Add event listener to the search button for mobile
+            document.getElementById('mobileSearchButton').addEventListener('click', function () {
+                // Redirect the user to search.html
+                window.location.href = 'search.html';
+            });
+        });
+
+        // Function to fetch and display Rice products from product.html
+        function fetchRiceProducts() {
+            fetch('product.html')
+                .then(response => response.text())
+                .then(data => {
+                    const parser = new DOMParser();
+                    const doc = parser.parseFromString(data, 'text/html');
+
+                    // Select all products with data-category="rice"
+                    const riceProducts = Array.from(doc.querySelectorAll('.product[data-category="rice"]'));
+
+                    // Categorize products into Mata Ji, Tulsi Gold, Basmati Pulav, and Basmati Super
+                    const mataJiRiceProducts = riceProducts.filter(product => product.getAttribute('item-category') === 'Mata Ji');
+                    const tulsiGoldRiceProducts = riceProducts.filter(product => product.getAttribute('item-category') === 'Tulsi Gold');
+                    const basmatiPulavRiceProducts = riceProducts.filter(product => product.getAttribute('item-category') === 'Basmati Pulav');
+                    const basmatiSuperRiceProducts = riceProducts.filter(product => product.getAttribute('item-category') === 'Basmati Super');
+
+                    // Convert filtered products into HTML strings
+                    const mataJiRiceHTML = mataJiRiceProducts.map(product => product.outerHTML).join('');
+                    const tulsiGoldRiceHTML = tulsiGoldRiceProducts.map(product => product.outerHTML).join('');
+                    const basmatiPulavRiceHTML = basmatiPulavRiceProducts.map(product => product.outerHTML).join('');
+                    const basmatiSuperRiceHTML = basmatiSuperRiceProducts.map(product => product.outerHTML).join('');
+
+                    // Display the products in their respective sections
+                    document.getElementById('mataJiRiceProducts').innerHTML = mataJiRiceHTML;
+                    document.getElementById('tulsiGoldRiceProducts').innerHTML = tulsiGoldRiceHTML;
+                    document.getElementById('basmatiPulavRiceProducts').innerHTML = basmatiPulavRiceHTML;
+                    document.getElementById('basmatiSuperRiceProducts').innerHTML = basmatiSuperRiceHTML;
+                })
+                .catch(error => console.error('Error fetching rice products:', error));
+        }
+
+        // Call the function to fetch and display Rice products when the page loads
+        window.onload = fetchRiceProducts;
+
+        function addToCart(name, price) {
+            let cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+
+            let found = false;
+            cartItems.forEach(item => {
+                if (item.name === name) {
+                    item.quantity++;
+                    found = true;
+                }
+            });
+
+            if (!found) {
+                cartItems.push({ name: name, price: price, quantity: 1 });
+            }
+
+            localStorage.setItem('cart', JSON.stringify(cartItems));
+
+            // Show pop-up message
+            showCartPopup(name);
+        }
+
+        function showCartPopup(productName) {
+            const cartPopup = document.getElementById('cart_popup');
+            cartPopup.innerText = `${productName} added to cart!`;
+            cartPopup.style.display = 'block';
+
+            setTimeout(() => {
+                cartPopup.style.display = 'none';
+            }, 2000);
+        }
+    </script>
+
+    <div id="cart_popup"></div>
+</body>
+</html>

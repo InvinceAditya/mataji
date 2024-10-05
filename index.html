@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9402946388242349"
+     crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/x-icon" href="/images/Logo.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Page</title>
+    <style>
+         .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropbtn {
+            background-color: #fff;
+            color: #333;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #fff;
+            min-width: 160px;
+            z-index: 1;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .dropdown-content a {
+            color: #333;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #f9f9f9;
+        }
+
+        .show {
+            display: block;
+        }
+        .category-navbar.mobile .category-navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px; /* Adjust padding as needed */
+}
+
+.category-navbar.mobile .category-navbar-container a {
+    text-decoration: none;
+    color: black; /* Change color as needed */
+}
+.carousel {
+            width: 100%; /* Default width for mobile */
+            overflow: hidden;
+        }
+        .carousel img {
+            width: 100%;
+            height: auto;
+        }
+        
+        /* Media query for desktop */
+        @media screen and (min-width: 768px) {
+            .carousel img.mobile-image {
+                display: none; /* Hide mobile poster in desktop */
+            }
+            .carousel img.desktop-image {
+                display: block;
+                margin: 0 auto; /* Center the image */
+                width: 80%; /* Make the image fill 80% of the carousel */
+                max-width: 100%;
+            }
+        }
+
+        /* Media query for mobile */
+        @media screen and (max-width: 767px) {
+            .carousel img.desktop-image {
+                display: none; /* Hide desktop poster in mobile */
+            }
+        }
+        .carousel {
+            width: 100%; /* Default width for mobile */
+            overflow: hidden;
+        }
+        .carousel img {
+            width: 100%;
+            height: auto;
+        }
+        
+        /* Media query for desktop */
+        @media screen and (min-width: 768px) {
+            .carousel img.mobile-image {
+                display: none; /* Hide mobile poster in desktop */
+            }
+            .carousel img.desktop-image {
+                display: block;
+                margin: 0 auto; /* Center the image */
+                width: 80%; /* Make the image fill 80% of the carousel */
+                max-width: 100%;
+            }
+            .carousel img.desktop-poster {
+                display: none; /* Hide Poster_1.png in desktop */
+            }
+        }
+
+        /* Media query for mobile */
+        @media screen and (max-width: 767px) {
+            .carousel img.desktop-image {
+                display: none; /* Hide desktop poster in mobile */
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"> <!-- Font Awesome CSS -->
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="logo">
+                <a href="index.html">
+                  <b><span class="company-name">Mata Ji Kirana</span></b>
+                  <i class="fas fa-home"></i>
+                </a>
+            </div>
+            <div class="search-bar">
+                <a href="search.html">
+                    <input id="search-input" type="text" placeholder="Search...">
+                    <button id="search-button"><i class="fas fa-search"></i></button>
+                </a>
+            </div>
+            <div class="search-button-mobile">
+                <button id="mobileSearchButton"><i class="fas fa-search"></i></button>
+            </div>
+        </div>
+    </nav>
+    <nav class="category-navbar desktop">
+        <div class="category-navbar-container">
+            <div class="dropdown">
+                <button class="dropbtn">Shop By Category <i class="fas fa-caret-down"></i></button>
+                <div class="dropdown-content">
+                    <a href="sauce.html">Sauces</a>
+             
+                    <a href="Rice.html">Rice</a>  
+                    <a href="washing.html">Cleaniness</a>
+                    <a href="oil.html">oil</a>
+                 
+                </div>
+            </div>
+        </div>
+    </nav>
+    
+    <nav class="category-navbar mobile">
+        <div class="category-navbar-container">
+            <b><p>Shop By Category</p></b>
+            <a href="sauce.html">Sauces</a>
+      
+            <a href="Rice.html">Rice</a>  
+            <a href="washing.html">Cleaniness</a>
+            <a href="oil.html">oil</a>
+        </div>
+    </nav>
+    
+<div class="container">
+    <div class="icon-slider">
+        <a href="tea.html">
+        <div class="icon">
+            <img src="https://th.bing.com/th/id/OIP.oxbv1nkN_udtBsVxz3gI8AHaHa?rs=1&pid=ImgDetMain" alt="Icon 1">
+ 
+        </div>
+    </a>
+    <a href="rice.html">
+        <div class="icon">
+            <img src="https://assets.epicurious.com/photos/568eb0bf7dc604b44b5355ee/master/pass/rice.jpg" alt="Icon 3">
+           
+        </div>
+    </a> 
+        <a href="oil.html">
+        <div class="icon">
+            <img src="https://th.bing.com/th/id/OIP.yHnkcgPqQHSrnJatut1hKgHaHa?rs=1&pid=ImgDetMain" alt="Icon 2">
+      
+        </div>
+    </a>
+        <a href="washing.html">
+        <div class="icon">
+            <img src="https://assets.bonappetit.com/photos/63e6c29840953eab0f1ffca3/16:9/w_2560%2Cc_limit/Best_cleaning_products.jpg" alt="Icon 3">
+        </div>
+        </a> 
+        <a href="sauce.html">
+            <div class="icon">
+                <img src="https://www.daringgourmet.com/wp-content/uploads/2017/04/Sweet-Sour-Sauce-1.jpg" alt="Icon 3">
+            </div>
+            </a> 
+    </div>
+   
+    </div>
+    <div id="productContainer" style="display: none;">
+        <!-- Products will be displayed dynamically here -->
+    </div>
+
+</div>
+
+<a href="cart.html" class="cart-button"><i class="fas fa-shopping-cart"></i></a> <!-- Link to cart.html with cart icon -->
+        <!-- <div class="slideshow-container"> -->
+            <!-- <div class="slide fade">
+                <img src="images/Poster_1.png" alt="Product 1">
+            </div> -->
+            <!-- <div class="slide fade">
+                <img src="https://via.placeholder.com/1000x1000" alt="Product 2">
+            </div>
+            <div class="slide fade">
+                <img src="https://via.placeholder.com/1000x400" alt="Product 3">
+            </div> -->
+        </div>
+        <!-- <div class="carousel">
+            <img class="mobile-image" src="images/Poster_1.png" alt="Mobile Poster 1">
+     
+            <img class="desktop-image" src="images/Desktop_Poster_1.png" alt="Desktop Poster 1">
+        </div> -->
+<div class="brand-section">
+    <h2>Shop Now</h2>
+    <div class="brand-logos">
+        <a href="#">
+            <img src="https://madhurasrecipe.com/wp-content/uploads/2020/09/Chings-Secret.png" alt="Brand 1">
+        </a>
+        <a href="#">
+            <img src="https://www.foodinfotech.com/wp-content/uploads/2021/08/Wagh-Bakri-Tea-Group-Logo.jpg" alt="Brand 2">
+        </a>
+        <a href="#">
+            <img src="https://d1yjjnpx0p53s8.cloudfront.net/styles/logo-thumbnail/s3/082010/Surf_Excel.gif?itok=yo5Qp1GO" alt="Brand 2">
+        </a>
+    </div>
+  
+</div>
+
+<div id="searchPopup" class="popup">
+    <div class="popup-content">
+        <span class="close" onclick="closeSearch()">&times;</span>
+        <input type="text" id="searchInputPopup" onkeyup="searchProducts()" placeholder="Search for products...">
+        <div id="searchResults"></div>
+    </div>
+</div>
+<div class="interactive-cards">
+    <div class="card">
+        <h2>Tea</h2>
+        <b><p>Mata Ji Kirana</p></b>
+        <button onclick="redirectToPage('tea.html')">View Details</button>
+    </div>
+    <div class="card">
+        <h2>Oil</h2>
+    <b> <p>Mata Ji</p></b>
+        <button onclick="redirectToPage('oil.html')">View Details</button>
+    </div>
+    <div class="card">
+        <h2>Rice</h2>
+      <b>  <p>Mata Ji</p></b>
+        <button onclick="redirectToPage('Rice.html')">View Details</button>
+    </div>
+    
+    <div class="card">
+        <h2>Cleaniness</h2>
+    <b><p>Mata Ji</p></b>
+        <button onclick="redirectToPage('washing.html')">View Details</button>
+    </div>
+    <div class="card">
+        <h2>Sauces</h2>
+    <b><p>Mata Ji</p></b>
+        <button onclick="redirectToPage('sauce.html')">View Details</button>
+    </div>
+    
+<div id="cart_popup"></div>
+
+<script>
+       document.addEventListener('DOMContentLoaded', function () {
+        const swiper = new Swiper('.swiper-container', {
+            loop: true,
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            autoplay: {
+                delay: 5000,
+            },
+        });
+    });
+      function redirectToSearch() {
+        window.location.href = "search.html";
+    }
+    function redirectToPage(nextPage) {
+    window.location.href = nextPage; 
+}
+
+    function addToCart(name, price) {
+        let cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+
+        let found = false;
+        cartItems.forEach(item => {
+            if (item.name === name) {
+                item.quantity++;
+                found = true;
+            }
+        });
+
+        if (!found) {
+            cartItems.push({ name: name, price: price, quantity: 1 });
+        }
+
+        localStorage.setItem('cart', JSON.stringify(cartItems));
+
+        // Show pop-up message
+        showCartPopup(name);
+    }
+
+    function showCartPopup(productName) {
+        const cartPopup = document.getElementById('cart_popup');
+        cartPopup.innerText = `${productName} added to cart!`;
+        cartPopup.style.display = 'block';
+
+        setTimeout(() => {
+            cartPopup.style.display = 'none';
+        }, 2000);
+    }
+
+    function openSearch() {
+        document.getElementById('searchPopup').style.display = 'flex';
+    }
+
+    function closeSearch() {
+        document.getElementById('searchPopup').style.display = 'none';
+    }
+
+    function searchProducts() {
+        let input, filter, products, productName, i;
+        input = document.getElementById('searchInputPopup');
+        filter = input.value.toUpperCase();
+        products = document.getElementById('productContainer').getElementsByClassName('product');
+        let searchResults = '';
+
+        for (i = 0; i < products.length; i++) {
+            productName = products[i].getElementsByClassName('product-name')[0];
+            if (productName.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                searchResults += products[i].outerHTML;
+            }
+        }
+
+        document.getElementById('searchResults').innerHTML = searchResults;
+    }
+
+    // Fetch products from product.html and display them
+    window.addEventListener('DOMContentLoaded', () => {
+        fetch('product.html')
+            .then(response => response.text())
+            .then(data => {
+                const parser = new DOMParser();
+                const productDocument = parser.parseFromString(data, 'text/html');
+                const products = productDocument.getElementById('productContainer').innerHTML;
+                document.getElementById('productContainer').innerHTML = products;
+            })
+            
+            .catch(error => console.log('Error fetching products:', error));
+    });
+    function toggleSearchBar() {
+    const searchBar = document.querySelector('.search-bar');
+    if (window.innerWidth <= 768) { // Adjust the breakpoint as needed
+        searchBar.style.display = 'none';
+    } else {
+        searchBar.style.display = 'flex';
+    }
+}
+
+// Call the function initially to set the initial state
+toggleSearchBar();
+
+// Add event listener for window resize to update the visibility of the search bar
+window.addEventListener('resize', toggleSearchBar);
+document.addEventListener('DOMContentLoaded', function () {
+            const swiper = new Swiper('.swiper-container', {
+                loop: true,
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true,
+                },
+                autoplay: {
+                    delay: 5000,
+                },
+            });
+        });
+        let slideIndex = 0;
+        showSlides();
+
+        function showSlides() {
+            let slides = document.getElementsByClassName("slide");
+           for (let i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";  
+}
+
+            slideIndex++;
+            if (slideIndex > slides.length) { slideIndex = 1 }
+            slides[slideIndex - 1].style.display = "block";
+            setTimeout(showSlides, 3000); // Change image every 5 seconds
+        }
+        document.addEventListener('DOMContentLoaded', function () {
+    // Add event listener to the search button for mobile
+    document.getElementById('mobileSearchButton').addEventListener('click', function () {
+        // Redirect the user to search.html
+        window.location.href = 'search.html';
+    });
+});
+   // Add this JavaScript to toggle the dropdown
+   document.addEventListener('DOMContentLoaded', function () {
+            const dropbtn = document.querySelector('.dropbtn');
+            const dropdownContent = document.querySelector('.dropdown-content');
+
+            // Function to toggle the dropdown
+            function toggleDropdown() {
+                dropdownContent.classList.toggle('show');
+            }
+
+            dropbtn.addEventListener('click', toggleDropdown);
+
+            // Close the dropdown if the user clicks outside of it
+            window.addEventListener('click', function (event) {
+                if (!event.target.matches('.dropbtn')) {
+                    if (dropdownContent.classList.contains('show')) {
+                        dropdownContent.classList.remove('show');
+                    }
+                }
+            });
+        });
+</script>
+
+</body>
+</html>
